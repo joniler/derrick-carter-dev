@@ -437,6 +437,8 @@ template {
     clear: both; }
 
 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 .image-replacement,
@@ -543,12 +545,13 @@ p {
   word-wrap: break-word;
   word-break: break-word;
   -webkit-hyphens: none;
-  -ms-hyphens: none;
-      hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
   -webkit-hyphenate-before: 2;
   -webkit-hyphenate-after: 3;
   hyphenate-lines: 3;
   -webkit-font-feature-settings: "liga", "dlig";
+  -moz-font-feature-settings: "liga=1, dlig=1";
   -ms-font-feature-settings: "liga", "dlig";
   -o-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig"; }
@@ -1054,6 +1057,8 @@ GENERAL STYLES
 *********************/
 html {
   font-size: 1em; }
+  html p {
+    font-family: "Muli", sans-serif; }
 
 body {
   color: #333333;
@@ -1066,6 +1071,66 @@ body {
 img {
   max-width: 100%;
   height: auto; }
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -250px;
+  visibility: hidden; }
+
+.arrow {
+  text-align: center;
+  margin: 8% 0; }
+
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite; }
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); }
+  40% {
+    transform: translateY(-30px); }
+  60% {
+    transform: translateY(-15px); } }
+
+.page-home .hero-outer {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
+  .page-home .hero-outer .hero-inner {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: all .4s ease; }
+    .page-home .hero-outer .hero-inner .down-arrow {
+      color: #fff;
+      font-size: 80px;
+      margin-top: 5rem; }
+
+.page-home .bio-outer .bio-inner .bio-hero-outer {
+  height: 80vh; }
+  .page-home .bio-outer .bio-inner .bio-hero-outer .bio-hero-inner {
+    height: 50vh;
+    display: flex;
+    align-items: center; }
+
+.page-home .bio-outer .bio-copy-outer {
+  background-image: url(../../library/images/tweed.png);
+  color: #fff; }
+  .page-home .bio-outer .bio-copy-outer .bio-copy-inner {
+    padding: 3em; }
+
+.button-white {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none; }
+  .button-white span {
+    font-weight: bold;
+    padding-right: .5em; }
 
 /********************
 WORDPRESS BODY CLASSES
@@ -1146,6 +1211,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: 500;
   line-height: 1.2;
   text-rendering: optimizelegibility;
+  font-family: "Josefin Sans", sans-serif;
   /*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -1180,7 +1246,9 @@ h6, .h6 {
 HEADER STYLES
 *********************/
 .header {
-  background: #efefef; }
+  background: #2C4069;
+  position: fixed;
+  width: 100%; }
 
 #site-title {
   font-size: 2em; }
@@ -1337,7 +1405,9 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
 .footer {
-  clear: both; }
+  clear: both;
+  background-color: #121212;
+  color: #fff; }
 
 /* end .footer-links */
 /*********************
@@ -1487,6 +1557,26 @@ busy with more stylings.
   /*********************
 GENERAL STYLES
 *********************/
+  .page-home .hero-outer .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(56, 56, 56, 0.5); }
+    .page-home .hero-outer .hero-inner .hero-logo {
+      width: 40rem; }
+  .page-home .bio-outer .bio-inner .bio-hero-outer {
+    height: 50vh; }
+    .page-home .bio-outer .bio-inner .bio-hero-outer .bio-hero-inner {
+      text-align: right; }
+      .page-home .bio-outer .bio-inner .bio-hero-outer .bio-hero-inner h2 {
+        font-weight: lighter;
+        color: #fff;
+        font-size: 8rem;
+        margin-left: auto;
+        margin-right: 2em; }
+  .page-home .bio-outer .bio-copy-outer .bio-copy-inner {
+    padding: 4em 6em;
+    font-size: 1.2em; }
   /*********************
 LAYOUT & GRID STYLES
 *********************/
@@ -1495,6 +1585,16 @@ LAYOUT & GRID STYLES
   /*********************
 HEADER STYLES
 *********************/
+  .header {
+    display: none; }
+    .header #inner-header {
+      display: flex;
+      align-items: center; }
+  #logo {
+    margin-right: auto; }
+    #logo img {
+      height: 75px;
+      padding: 1em; }
   /*********************
 NAVIGATION STYLES
 *********************/
@@ -1503,27 +1603,34 @@ NAVIGATION STYLES
     padding: 0;
     border: 0;
     list-style-type: none;
+    text-align: left;
+    margin-right: 1em;
+    font-size: 1.2em;
     /* end .menu ul li */
     /* highlight current page */
     /* end current highlighters */ }
     .nav li {
-      float: left;
       list-style: none;
+      float: left;
       /*
 		plan your menus and drop-downs wisely.
 		*/
       /* showing sub-menus */ }
       .nav li a {
         display: block;
-        padding: 0.2em;
+        padding: 0 .5em;
+        padding-top: 2.5px;
         border-bottom: 0;
         text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        font-family: "Josefin Sans", sans-serif;
+        border-bottom: none;
+        transition: all .3s ease-in;
         /*
 			you can use hover styles here even though this size
 			has the possibility of being a mobile device.
 			*/ }
-        .nav li a:hover, .nav li a:focus {
-          text-decoration: underline; }
       .nav li ul.sub-menu,
       .nav li ul.children {
         position: absolute;
@@ -1679,8 +1786,7 @@ though, go for it.
     background: transparent !important;
     color: black !important;
     text-shadow: none !important;
-    -webkit-filter: none !important;
-            filter: none !important;
+    filter: none !important;
     -ms-filter: none !important; }
   a, a:visited {
     color: #444 !important;
@@ -1716,4 +1822,3 @@ though, go for it.
   .respond-form,
   nav {
     display: none; } }
-/*# sourceMappingURL=style.css.map */

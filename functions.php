@@ -852,4 +852,10 @@ if (in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'))) {
   add_action( 'wp_enqueue_scripts', 'livereload_script' );
 }
 
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page();
+	
+}
+
 ?>

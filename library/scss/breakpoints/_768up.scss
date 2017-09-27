@@ -17,6 +17,43 @@ GENERAL STYLES
 
 body {}
 
+.page-home{
+	.hero-outer {
+		.hero-inner {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: rgba(56,56,56,0.5);
+			.hero-logo {
+				width: 40rem;
+			}
+		}
+	}
+	.bio-outer {
+		.bio-inner {
+			.bio-hero-outer {
+				height: 50vh;
+				.bio-hero-inner {
+					text-align: right;
+					h2 {
+						font-weight: lighter;
+						color: $white;
+						font-size: 8rem;
+						margin-left: auto;
+						margin-right: 2em;
+					}
+				}
+			}
+		}
+		.bio-copy-outer {
+			.bio-copy-inner {
+				padding: 4em 6em;
+				font-size: 1.2em;
+			}
+		}
+	}
+}
+
 /*********************
 LAYOUT & GRID STYLES
 *********************/
@@ -30,12 +67,19 @@ HEADER STYLES
 *********************/
 
 .header {
-
+	display: none;
+	#inner-header {
+		display: flex;
+		align-items: center;
+	}
 }
 
 	#logo {
-
-		img {}
+		margin-right: auto;
+		img {
+			height: 75px;
+			padding: 1em;
+		}
 	}
 
 /*********************
@@ -55,21 +99,29 @@ nav {}
 	padding: 0;
 	border: 0;
 	list-style-type: none;
+	text-align: left;
+	margin-right: 1em;
+	font-size: 1.2em;
 	li {
-		float: left;
 		list-style: none;
+		float: left;
 		a {
 			display: block;
-			padding: 0.2em;
+			padding: 0 .5em;
+			padding-top: 2.5px;
 			border-bottom: 0;
 			text-decoration: none;
+			color: $white;
+			text-transform: uppercase;
+			font-family: $josefin;
+			border-bottom: none;
+			transition: all .3s ease-in;
 
 			/*
 			you can use hover styles here even though this size
 			has the possibility of being a mobile device.
 			*/
 			&:hover, &:focus {
-				text-decoration: underline;
 			}
 		}
 

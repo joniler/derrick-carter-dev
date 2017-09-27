@@ -19,6 +19,9 @@ GENERAL STYLES
 
 html {
 	font-size: 1em; // 1em = 16px; Adjust if you want a different baseline.
+	p {
+		font-family: $muli;
+	}
 }
 
 body {
@@ -34,6 +37,88 @@ img { // responsive images by default
 	max-width: 100%;
 	height: auto;
 }
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}
+
+.arrow {
+  text-align: center;
+  margin: 8% 0;
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.page-home{
+	.hero-outer {
+		height: 100vh;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		.hero-inner {
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			transition: all .4s ease;
+			.hero-logo {
+			}
+			.down-arrow {
+				color: $white;
+				font-size: 80px;
+				margin-top: 5rem;
+			}
+		}
+	}
+	.bio-outer {
+		.bio-inner {
+			.bio-hero-outer {
+				height: 80vh;
+				.bio-hero-inner {
+					height: 50vh;
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+		.bio-copy-outer {
+			background-image: url(../../library/images/tweed.png);
+			color: $white;
+			.bio-copy-inner {
+				padding: 3em;
+			}
+		}
+	}
+}
+
+.button-white {
+	display: flex;
+	align-items: center;
+	color: $white;
+	text-decoration: none;
+	span {
+		font-weight: bold;
+		padding-right: .5em;
+	}
+}
+
 
 /********************
 WORDPRESS BODY CLASSES
@@ -128,6 +213,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   	font-weight: 500;
   	line-height: 1.2;
 	text-rendering: optimizelegibility;
+	font-family: $josefin;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -172,7 +258,9 @@ HEADER STYLES
 *********************/
 
 .header {
-	background: #efefef;
+	background: $dc-blue-dark;
+	position: fixed;
+	width: 100%;
 }
 
 	#site-title {
@@ -671,6 +759,8 @@ FOOTER STYLES
 
 .footer {
 	clear: both;
+	background-color: $dc-black;
+	color: $white;
 }
 
 	.footer-links {
